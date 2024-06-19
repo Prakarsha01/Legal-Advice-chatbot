@@ -2,7 +2,7 @@ import streamlit as st
 import torch
 import openai
 from streamlit_chat import message
-from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
+from transformers import BertTokenizer, BertForSequenceClassification
 
 
 # Set up OpenAI API key
@@ -39,6 +39,19 @@ def run_gpt_integration(classification_label, risk_analysis, clause):
     )
     return response['choices'][0]['message']['content']
 
+def run_riskAnalysis(clause):
+    # Risk Analysis using GPT-4o
+    risk_template = "You are a legal advisor. Identify any potential risks in the clauses given to you."
+    prompt = clause
+    response = openai.ChatCompletion.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": risk_template},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    return response['choices'][0]['message']['content']
+
 # Define a combined function
 def classify_and_analyze_clause(clause):
     classification_result = classify_clause_legal_bert(clause)
@@ -64,6 +77,8 @@ else:
 user_input = st.chat_input(placeholder="Enter a contract clause...")
 
 if user_input:
+    with st.spinner('Please wait while I analyise your clause for you...'):
+        response = classify_and_analyze_clause(user_input)
     response = classify_and_analyze_clause(user_input)
     st.session_state.messages.append({"question": user_input, "answer": "\n"+response})
     st.experimental_rerun()

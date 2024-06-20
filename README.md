@@ -47,6 +47,8 @@ The Legal-BERT model was fine-tuned using the `nlpaueb/legal-bert-base-uncased` 
 
 https://github.com/Prakarsha01/Legal-Advice-chatbot/assets/67196711/f00072ba-dbcd-483d-8135-f0600eeba3b4
 
+For detailed explaination on the project read the following [article](https://medium.com/@prakarsha/automated-contract-clause-understanding-and-risk-assessment-with-fine-tuned-legal-bert-and-gpt-4o-3a6f0423ace3).
+
 
 ## Conclusion
 
@@ -54,6 +56,7 @@ This project demonstrates the integration of a fine-tuned Legal-BERT model and G
 
 ## References
 
+- [Medium article: Detailed Project Explaination](https://medium.com/@prakarsha/automated-contract-clause-understanding-and-risk-assessment-with-fine-tuned-legal-bert-and-gpt-4o-3a6f0423ace3)
 - [LegalBench Dataset](https://huggingface.co/datasets/nguha/legalbench)
 - [LegalBench Research Paper](https://arxiv.org/abs/2308.11462)
 - [Hugging Face Transformers](https://huggingface.co/transformers/)
